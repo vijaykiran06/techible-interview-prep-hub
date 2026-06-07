@@ -1,10 +1,16 @@
-import axios from "axios";
+import axios from 'axios';
 
-const axiosConfig = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL,
+const BACKEND_URL =
+  import.meta.env.VITE_BACKEND_URL ||
+  'http://localhost:3000';
+
+const apiClient = axios.create({
+  baseURL: BACKEND_URL,
+  timeout: 20000,
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 });
 
-export default axiosConfig;
+export default apiClient;
+export { BACKEND_URL };
