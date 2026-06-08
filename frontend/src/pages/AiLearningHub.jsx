@@ -56,7 +56,7 @@ export default function AiLearningHub() {
 
             {locked && (
               <div className="tier-section__alert">
-                🔒 This tier is premium. Subscribe to unlock all {filtered.length} topics.
+                 This tier is premium. Subscribe to unlock all {filtered.length} topics.
               </div>
             )}
 

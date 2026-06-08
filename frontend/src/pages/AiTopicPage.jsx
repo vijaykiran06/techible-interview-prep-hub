@@ -2,6 +2,8 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAiTopicBySlug } from "../services/aiTopicService";
+import AiTutorChat from "../components/AiTutorChat";
+import AiQuizWidget from "../components/AiQuizWidget";
 
 export default function AiTopicPage() {
   const { slug } = useParams();
@@ -31,9 +33,8 @@ export default function AiTopicPage() {
         {topic.content}
       </div>
 
-      <div className="topic-page__ai-placeholder">
-        🤖 AI Tutor coming soon (Groq)
-      </div>
+      <AiTutorChat topicTitle={topic.title} tier={topic.tier} />
+      <AiQuizWidget topicTitle={topic.title} tier={topic.tier} />
     </div>
   );
 }
