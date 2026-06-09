@@ -7,6 +7,7 @@ const CompanyCard = ({ company }) => {
       {/* Company Logo */}
       {company?.logo?.url ? (
   <img
+  
     src={company.logo.url}
     alt={company.name}
     className="w-16 h-16 mx-auto rounded-full bg-white object-contain"
@@ -54,6 +55,7 @@ const CompanyCard = ({ company }) => {
         </span>
 
       </div>
+
 
       {/* Question Count */}
       <div className="flex justify-center gap-6 mt-4 text-zinc-400 text-sm">
