@@ -6,16 +6,23 @@ const CompanyCard = ({ company }) => {
 
       {/* Company Logo */}
       {company?.logo?.url ? (
-        <img
-          src={company.logo.url}
-          alt={company.name}
-          className="w-16 h-16 mx-auto rounded-full bg-white object-contain"
-        />
-      ) : (
-        <div className="flex items-center justify-center w-16 h-16 mx-auto rounded-full bg-zinc-800 text-2xl font-bold text-white">
-          {company.name.charAt(0)}
-        </div>
-      )}
+  <img
+    src={company.logo.url}
+    alt={company.name}
+    className="w-16 h-16 mx-auto rounded-full bg-white object-contain"
+    onError={(e) => {
+      e.target.style.display = 'none';
+      e.target.nextSibling.style.display = 'flex';
+    }}
+  />
+) : null}
+
+<div
+  className="flex items-center justify-center w-16 h-16 mx-auto rounded-full bg-zinc-800 text-2xl font-bold text-white"
+  style={{ display: company?.logo?.url ? 'none' : 'flex' }}
+>
+  {company.name.charAt(0)}
+</div>
 
       {/* Company Name */}
       <h3 className="mt-4 text-xl font-semibold text-white text-center">
