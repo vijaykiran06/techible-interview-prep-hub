@@ -5,6 +5,8 @@ require('dotenv').config();
 
 const companyRoutes = require('./routes/companyRoutes');
 
+const interviewPrepRoutes = require('./routes/interviewPrepRoutes');
+
 const app = express();
 
 // Middleware
@@ -22,6 +24,7 @@ app.get('/health', (req, res) => {
 
 // Routes
 app.use('/api/companies', companyRoutes);
+app.use('/api/interview-prep', interviewPrepRoutes);
 
 // MongoDB Connection
 mongoose
