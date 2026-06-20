@@ -528,7 +528,7 @@ const [questionDifficulty, setQuestionDifficulty] =
   </div>
 )}
 
-{activeTab === "resources" && (
+{activeTab  === "resources" && (
   <div className="space-y-6">
 
     <div className="bg-zinc-900 rounded-xl p-6">

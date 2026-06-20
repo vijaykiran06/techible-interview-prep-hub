@@ -61,7 +61,7 @@ const CompanyCard = ({ company }) => {
       <div className="flex justify-center gap-6 mt-4 text-zinc-400 text-sm">
 
   <div>
-    ❓ {company.questionCount || 0}
+    📝 {company.questionCount || 0}
   </div>
 
   <div>

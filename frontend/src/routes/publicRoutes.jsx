@@ -12,12 +12,12 @@ const PublicRoutes = () => {
       />
 
       <Route
-        path="/interview-prep"
+        path ="/interview-prep"
         element={<CompanyListingPage />}
       />
 
       <Route
-        path="/interview-prep/:slug"
+        path ="/interview-prep/:slug"
         element={<CompanyDetailPage />}
       />
     </Routes>
