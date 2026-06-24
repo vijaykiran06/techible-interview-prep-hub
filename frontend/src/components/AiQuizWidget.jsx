@@ -29,7 +29,7 @@ export default function AiQuizWidget({ topicTitle, tier }) {
   return (
     <div className="quiz">
       <div className="quiz__header">
-        <h3 className="quiz__title">🧠 Practice Quiz</h3>
+        <h3 className="quiz__title"> Practice Quiz</h3>
         <button onClick={loadQuiz} disabled={loading} className="quiz__generate-btn">
           {loading ? "Generating..." : quiz.length ? "Regenerate" : "Generate Quiz"}
         </button>

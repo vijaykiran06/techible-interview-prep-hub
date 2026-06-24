@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import AiTopic from "../models/aiTopicSchema.js";
+import AiTopic from "../s/aiTopicSchema.js";
 import "dotenv/config";
 
 const topics = [
@@ -118,7 +118,7 @@ const topics = [
     slug: "low-level-design",
     tier: 3,
     description: "Design classes and patterns for real systems.",
-    content: "LLD asks you to model a system with classes, interfaces, and design patterns. Common questions: design a parking lot, elevator system, chess game, or library management. Know SOLID principles and patterns like Strategy, Observer, Factory.",
+    content: "LLD asks you to  a system with classes, interfaces, and design patterns. Common questions: design a parking lot, elevator system, chess game, or library management. Know SOLID principles and patterns like Strategy, Observer, Factory.",
   },
 ];
 

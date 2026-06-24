@@ -25,7 +25,7 @@ const aiTopics = [
   { title: "Database Design and SQL",   slug: "database-design-and-sql",   tier: 3, description: "Schema design, normalization, and complex queries.",  content: "Know 1NF/2NF/3NF. Write JOINs, GROUP BY, subqueries confidently. Understand B-tree indexes, query optimization, and when to denormalize for read performance." },
   { title: "OS Concepts",               slug: "os-concepts",               tier: 3, description: "Processes, threads, deadlocks, memory management.",  content: "Key topics: process vs thread, deadlock conditions (mutual exclusion, hold-and-wait, no preemption, circular wait), virtual memory, paging, context switching." },
   { title: "Concurrency and Multithreading", slug: "concurrency-and-multithreading", tier: 3, description: "Race conditions, locks, thread-safe code.", content: "Race conditions occur when threads access shared data simultaneously. Fix with mutex/locks. Know deadlock vs livelock, thread pools, and producer-consumer problem." },
-  { title: "Low Level Design (LLD)",    slug: "low-level-design",          tier: 3, description: "Design classes and patterns for real systems.",      content: "LLD: model systems with classes, interfaces, design patterns. Common: parking lot, elevator, chess game. Know SOLID principles and Strategy, Observer, Factory patterns." },
+  { title: "Low Level Design (LLD)",    slug: "low-level-design",          tier: 3, description: "Design classes and patterns for real systems.",      content: "LLD:  systems with classes, interfaces, design patterns. Common: parking lot, elevator, chess game. Know SOLID principles and Strategy, Observer, Factory patterns." },
 ];
 
 async function seedAiTopics() {
