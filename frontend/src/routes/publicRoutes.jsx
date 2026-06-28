@@ -1,7 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 
-import CompanyListingPage from '../pages/CompanyListing';
-import CompanyDetailPage from '../pages/CompanyDetail';
+import LandingPage from '../pages/LandingPage';
+import CompanyListingPage from '../pages/interview/CompanyListing';
+import CompanyDetailPage from '../pages/interview/CompanyDetail';
 
 import InterviewPrepHub from '../pages/LearnPages/InterviewPrepHub';
 import InterviewPrepLevel from '../pages/LearnPages/InterviewPrepLevel';
@@ -10,18 +11,21 @@ import InterviewPrepTopic from '../pages/LearnPages/InterviewPrepTopic';
 const PublicRoutes = () => {
   return (
     <Routes>
+      {/* Landing Page */}
       <Route
         path="/"
+        element={<LandingPage />}
+      />
+
+      {/* Interview Prep - Company Listing */}
+      <Route
+        path="/interview-prep"
         element={<CompanyListingPage />}
       />
 
+      {/* Interview Prep - Company Details */}
       <Route
-        path ="/interview-prep"
-        element={<CompanyListingPage />}
-      />
-
-      <Route
-        path ="/interview-prep/:slug"
+        path="/interview-prep/:slug"
         element={<CompanyDetailPage />}
       />
 
