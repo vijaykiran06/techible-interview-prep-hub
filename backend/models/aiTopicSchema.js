@@ -6,6 +6,12 @@ const aiTopicSchema = new mongoose.Schema({
   tier:        { type: Number, enum: [1, 2, 3], required: true },
   description: { type: String, required: true },
   content:     { type: String, required: true },
+  resources: [
+    {
+      label: String,
+      url:   String,
+    }
+  ],
   completedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
 }, { timestamps: true });
 

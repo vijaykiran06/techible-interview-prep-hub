@@ -333,3 +333,114 @@
   font-weight: 600;
   color: #16a34a;
 }
+/* Progress Bar */
+.tier-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.tier-progress-bar__fill {
+  height: 100%;
+  background: #3b82f6;
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+.tier-section__progress-text {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+/* Resources */
+.topic-page__resources {
+  margin-top: 2rem;
+}
+.topic-page__resources-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.topic-page__resources-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.topic-page__resource-link {
+  font-size: 0.875rem;
+  color: #2563eb;
+  text-decoration: none;
+}
+.topic-page__resource-link:hover {
+  text-decoration: underline;
+}
+
+/* Shadcn Alert override */
+.tier-section__shadcn-alert {
+  margin-bottom: 1rem;
+  border-color: #fde047;
+  background: #fefce8;
+}
+.tier-alert__icon {
+  color: #92400e;
+  width: 16px;
+  height: 16px;
+}
+.tier-alert__desc {
+  color: #92400e;
+}
+.tier-alert__link {
+  color: #92400e;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Gate Overlay */
+.topic-grid-wrapper {
+  position: relative;
+}
+.topic-grid--locked {
+  filter: blur(3px);
+  pointer-events: none;
+  user-select: none;
+}
+.tier-gate-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 0.75rem;
+  z-index: 10;
+}
+.tier-gate-overlay__icon {
+  color: #6b7280;
+}
+.tier-gate-overlay__text {
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.875rem;
+}
+.tier-gate-overlay__btn {
+  background: #2563eb;
+  color: #fff;
+  padding: 0.4rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+.tier-gate-overlay__btn:hover {
+  background: #1d4ed8;
+}
+
+/* Shadcn Progress override */
+.tier-progress {
+  height: 6px;
+  margin-bottom: 1rem;
+}

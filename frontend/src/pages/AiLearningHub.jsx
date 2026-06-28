@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Lock } from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Progress } from "@/components/ui/progress";
 import AiTopicCard from "../components/AiTopicCard";
 import { fetchAiTopicsGrouped } from "../services/aiTopicService";
 
@@ -11,6 +13,7 @@ const TIERS = {
 };
 
 const isLoggedIn = false;
+const completedTopics = []; // replace with real user data later
 
 export default function AiLearningHub() {
   const [search, setSearch] = useState("");
@@ -43,8 +46,17 @@ export default function AiLearningHub() {
           t.title.toLowerCase().includes(search.toLowerCase())
         );
 
+        // 0 for guests, real count for logged-in
+        const completed = isLoggedIn
+          ? completedTopics.filter(id => filtered.find(t => t._id === id)).length
+          : 0;
+        const progress = filtered.length
+          ? Math.round((completed / filtered.length) * 100)
+          : 0;
+
         return (
           <div key={tier} className="tier-section">
+            {/* Header */}
             <div className="tier-section__header">
               <h2 className="tier-section__title">{label}</h2>
               {!free && (
@@ -52,18 +64,46 @@ export default function AiLearningHub() {
                   <Lock size={10} /> Premium
                 </span>
               )}
+              <span className="tier-section__progress-text">
+                {completed}/{filtered.length} completed
+              </span>
             </div>
 
+            {/* Shadcn Progress Bar */}
+            <Progress value={progress} className="tier-progress" />
+
+            {/* Shadcn Alert for locked tiers */}
             {locked && (
-              <div className="tier-section__alert">
-                 This tier is premium. Subscribe to unlock all {filtered.length} topics.
-              </div>
+              <Alert className="tier-section__shadcn-alert">
+                <Lock className="tier-alert__icon" />
+                <AlertDescription className="tier-alert__desc">
+                  This tier is premium.{" "}
+                  <a href="/pricing" className="tier-alert__link">
+                    Subscribe
+                  </a>{" "}
+                  to unlock all {filtered.length} topics.
+                </AlertDescription>
+              </Alert>
             )}
 
-            <div className="topic-grid">
-              {filtered.map(topic => (
-                <AiTopicCard key={topic._id} topic={topic} locked={locked} />
-              ))}
+            {/* Cards with overlay if locked */}
+            <div className="topic-grid-wrapper">
+              <div className={locked ? "topic-grid topic-grid--locked" : "topic-grid"}>
+                {filtered.map(topic => (
+                  <AiTopicCard key={topic._id} topic={topic} locked={locked} />
+                ))}
+              </div>
+
+              {/* Gate Overlay */}
+              {locked && (
+                <div className="tier-gate-overlay">
+                  <Lock size={32} className="tier-gate-overlay__icon" />
+                  <p className="tier-gate-overlay__text">Premium Content</p>
+                  <a href="/pricing" className="tier-gate-overlay__btn">
+                    Subscribe to Unlock
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         );

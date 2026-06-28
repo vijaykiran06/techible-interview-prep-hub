@@ -33,6 +33,21 @@ export default function AiTopicPage() {
         {topic.content}
       </div>
 
+      {topic.resources?.length > 0 && (
+        <div className="topic-page__resources">
+          <h3 className="topic-page__resources-title">📚 Resources</h3>
+          <ul className="topic-page__resources-list">
+            {topic.resources.map((r, i) => (
+              <li key={i}>
+                <a href={r.url} target="_blank" rel="noreferrer" className="topic-page__resource-link">
+                  {r.label} ↗
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <AiTutorChat topicTitle={topic.title} tier={topic.tier} />
       <AiQuizWidget topicTitle={topic.title} tier={topic.tier} />
     </div>
