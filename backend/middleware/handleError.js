@@ -1,4 +1,6 @@
-import logger from "../utils/logger.js";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const logger = require("../utils/logger.js");
 
 const handleError = (res, error, defaultMessage = "An error occurred") => {
   logger.error(error);
