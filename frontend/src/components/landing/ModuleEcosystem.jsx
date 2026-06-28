@@ -43,7 +43,7 @@ const modules = [
     icon: <FaUserGraduate />,
     color: "from-blue-500/20 to-cyan-700/10",
     glow: "hover:shadow-blue-500/30",
-      link: "/interview",
+      link: "/learn/interview-prep",
   },
   {
     title: "Projects Hub",
