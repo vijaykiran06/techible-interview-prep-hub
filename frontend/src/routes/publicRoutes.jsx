@@ -12,5 +12,42 @@ const publicRoutes = (
     <Route path="/learn/ai/:slug" element={<AiTopicPage />} />
   </>
 );
+import InterviewPrepHub from '../pages/LearnPages/InterviewPrepHub';
+import InterviewPrepLevel from '../pages/LearnPages/InterviewPrepLevel';
+import InterviewPrepTopic from '../pages/LearnPages/InterviewPrepTopic';
+
+const PublicRoutes = () => {
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={<CompanyListingPage />}
+      />
+
+      <Route
+        path ="/interview-prep"
+        element={<CompanyListingPage />}
+      />
+
+      <Route
+        path ="/interview-prep/:slug"
+        element={<CompanyDetailPage />}
+      />
+
+      <Route 
+        path="/learn/interview-prep" 
+        element={<InterviewPrepHub />} 
+      />
+      <Route 
+        path="/learn/interview-prep/:level" 
+        element={<InterviewPrepLevel />} 
+      />
+      <Route 
+        path="/learn/interview-prep/:level/:topic" 
+        element={<InterviewPrepTopic />} 
+      />
+    </Routes>
+  );
+};
 
 export default publicRoutes;

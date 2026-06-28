@@ -10,8 +10,10 @@ import aiChatRoutes from "./routes/aiChatRoutes.js";
 
 const companyRoutes = require("./routes/companyRoutes.cjs");
 
-const app = express();
+const interviewPrepRoutes = require('./routes/interviewPrepRoutes');
 
+const app = express();
+ 
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -26,6 +28,9 @@ app.get("/health", (req, res) => {
 app.use("/api/companies", companyRoutes);
 app.use("/api/ai-topics", aiTopicRoutes);
 app.use("/api/ai-chat", aiChatRoutes);
+=======
+app.use('/api/companies', companyRoutes);
+app.use('/api/interview-prep', interviewPrepRoutes);
 
 // Connect DB + Start Server
 mongoose.connect(process.env.MONGO_URI)
@@ -33,6 +38,15 @@ mongoose.connect(process.env.MONGO_URI)
     console.log("✅ MongoDB connected");
     app.listen(process.env.PORT || 5000, () => {
       console.log(`✅ Server running on port ${process.env.PORT || 5000}`);
+
+    console.log('MongoDB Connected');
+ 
+    app.listen(process.env.PORT || 3000, () => {
+      console.log(
+        `Server running on port ${
+          process.env.PORT || 3000
+        }`
+      );
     });
   })
   .catch(err => console.error("❌ DB connection failed:", err));
