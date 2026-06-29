@@ -24,7 +24,7 @@ const modules = [
     icon: <FaCode />,
     color: "from-green-500/20 to-emerald-700/10",
     glow: "hover:shadow-green-500/30",
-     link: "/technical-challenges",
+     link:"/learn/challenges",
      
   },
   {
@@ -34,7 +34,7 @@ const modules = [
     icon: <FaRobot />,
     color: "from-violet-500/20 to-indigo-700/10",
     glow: "hover:shadow-violet-500/30",
-     link: "/ai-learning",
+     link: "/learn/ai",
   },
   {
     title: "Interview Prep",
