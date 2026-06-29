@@ -18,7 +18,11 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "express-session": "^1.19.0",
+<<<<<<< HEAD
     "groq-sdk": "^1.2.1",
+=======
+    "lucide-react": "^1.21.0",
+>>>>>>> 707369da9fc042ea721cfec77bdabf4a246a9af6
     "mongoose": "^9.6.2",
     "multer": "^2.1.1"
   },

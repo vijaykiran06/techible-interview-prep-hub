@@ -3,7 +3,7 @@ import AiTopic from "../models/aiTopicSchema.js";
 import "dotenv/config";
 
 const aiTopics = [
-  // ── TIER 1 — Fundamentals (5 topics) ─────────────────────────────
+  // ── TIER 1 — Fundamentals (5 topics) 
   {
     title: "Arrays and Strings",
     slug: "arrays-and-strings",
@@ -140,7 +140,7 @@ Tip: Whenever you see "nearest greater/smaller element" in a problem — think m
     resources: [],
   },
 
-  // ── TIER 2 — Intermediate (6 topics) ──────────────────────────────
+  // ── TIER 2 — Intermediate (6 topics) 
   {
     title: "Trees and Binary Search Trees",
     slug: "trees-and-bst",
@@ -336,7 +336,7 @@ Key insight: If an interviewer asks you to sort, always ask — "What is the ran
     resources: [],
   },
 
-  // ── TIER 3 — Advanced (5 topics) ──────────────────────────────────
+  // ── TIER 3 — Advanced (5 topics)
   {
     title: "System Design Basics",
     slug: "system-design-basics",
@@ -510,7 +510,7 @@ async function seed() {
   await mongoose.connect(process.env.MONGO_URI);
   await AiTopic.deleteMany({});
   await AiTopic.insertMany(aiTopics);
-  console.log("✅ Seeded", aiTopics.length, "CS Interview topics");
+  console.log(" Seeded", aiTopics.length, "CS Interview topics");
   mongoose.disconnect();
 }
 
