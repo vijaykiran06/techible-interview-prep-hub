@@ -1,3 +1,8 @@
+import { Route } from 'react-router-dom';
+import CompanyListingPage from '../pages/CompanyListing';
+import CompanyDetailPage from '../pages/CompanyDetail';
+import AiLearningHub from '../pages/AiLearningHub';
+import AiTopicPage from '../pages/AiTopicPage';
 import { Routes, Route } from 'react-router-dom';
 
 import LandingPage from '../pages/LandingPage';
@@ -5,6 +10,14 @@ import CompanyListingPage from '../pages/interview/CompanyListing';
 import CompanyDetailPage from '../pages/interview/CompanyDetail';
 import ProjectsHub from '../pages/LearnPages/ProjectsHub';
 
+const publicRoutes = (
+  <>
+    <Route path="/interview-prep" element={<CompanyListingPage />} />
+    <Route path="/interview-prep/:slug" element={<CompanyDetailPage />} />
+    <Route path="/learn/ai" element={<AiLearningHub />} />
+    <Route path="/learn/ai/:slug" element={<AiTopicPage />} />
+  </>
+);
 import InterviewPrepHub from '../pages/LearnPages/InterviewPrepHub';
 import InterviewPrepLevel from '../pages/LearnPages/InterviewPrepLevel';
 import InterviewPrepTopic from '../pages/LearnPages/InterviewPrepTopic';
@@ -53,4 +66,4 @@ const PublicRoutes = () => {
   );
 };
 
-export default PublicRoutes;
+export default publicRoutes;
