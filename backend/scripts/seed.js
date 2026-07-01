@@ -39,7 +39,9 @@ const companies = [
   {
     name: 'Amazon',
     slug: 'amazon',
-    logo: { url: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' },
+    logo: { 
+      url: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' 
+        },
     industry: 'E-Commerce',
     headquarters: 'Seattle, WA',
     founded: 1994,
@@ -63,7 +65,9 @@ const companies = [
   {
     name: 'Flipkart',
     slug: 'flipkart',
-    logo: { url: 'https://logos-world.net/wp-content/uploads/2020/11/Flipkart-Logo.png' },
+    logo: {
+       url: 'https://www.google.com/s2/favicons?domain=flipkart.com&sz=128' 
+      },
     industry: 'E-Commerce',
     headquarters: 'Bengaluru, India',
     founded: 2007,
