@@ -28,7 +28,7 @@ app.get("/health", (req, res) => {
 app.use("/api/companies", companyRoutes);
 app.use("/api/ai-topics", aiTopicRoutes);
 app.use("/api/ai-chat", aiChatRoutes);
-=======
+
 app.use('/api/companies', companyRoutes);
 app.use('/api/interview-prep', interviewPrepRoutes);
 
