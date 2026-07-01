@@ -52,7 +52,7 @@ const modules = [
     icon: <FaFolderOpen />,
     color: "from-yellow-500/20 to-orange-700/10",
     glow: "hover:shadow-yellow-500/30",
-     link: "/projects",
+     link: "/learn/projects",
   },
 ];
 

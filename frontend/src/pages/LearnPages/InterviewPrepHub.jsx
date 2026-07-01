@@ -1,5 +1,4 @@
 // frontend/src/pages/LearnPages/InterviewPrepHub.jsx
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useInterviewLevels } from '../../services/interviewPrepApi';
 import { Layers, Briefcase, Award, ArrowRight } from 'lucide-react';

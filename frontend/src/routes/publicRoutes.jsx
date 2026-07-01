@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import LandingPage from '../pages/LandingPage';
 import CompanyListingPage from '../pages/interview/CompanyListing';
 import CompanyDetailPage from '../pages/interview/CompanyDetail';
+import ProjectsHub from '../pages/LearnPages/ProjectsHub';
 
 import InterviewPrepHub from '../pages/LearnPages/InterviewPrepHub';
 import InterviewPrepLevel from '../pages/LearnPages/InterviewPrepLevel';
@@ -29,6 +30,13 @@ const PublicRoutes = () => {
         element={<CompanyDetailPage />}
       />
 
+      {/* Projects Hub */}
+      <Route
+        path="/learn/projects"
+        element={<ProjectsHub />}
+      />
+
+      {/* Interview Prep (Level-Based) */}
       <Route 
         path="/learn/interview-prep" 
         element={<InterviewPrepHub />} 

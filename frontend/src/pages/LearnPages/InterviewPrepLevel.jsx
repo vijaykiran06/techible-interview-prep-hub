@@ -1,5 +1,4 @@
 // frontend/src/pages/LearnPages/InterviewPrepLevel.jsx
-import React from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useInterviewTopics } from '../../services/interviewPrepApi';
 import { ChevronRight, ArrowLeft, BookOpen } from 'lucide-react';
