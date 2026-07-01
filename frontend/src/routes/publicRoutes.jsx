@@ -1,17 +1,23 @@
-import { Routes, Route } from 'react-router-dom';
-
-// 1. Landing Page
-import LandingPage from '../pages/LandingPage';
-
-// 2. Company & Interview Prep Pages (Using the new folder structure)
-import CompanyListingPage from '../pages/interview/CompanyListing';
-import CompanyDetailPage from '../pages/interview/CompanyDetail';
-
-// 3. AI Learning Hub Pages
+import { Route } from 'react-router-dom';
+import CompanyListingPage from '../pages/CompanyListing';
+import CompanyDetailPage from '../pages/CompanyDetail';
 import AiLearningHub from '../pages/AiLearningHub';
 import AiTopicPage from '../pages/AiTopicPage';
+import { Routes, Route } from 'react-router-dom';
 
-// 4. General Interview Prep Learning Pages
+import LandingPage from '../pages/LandingPage';
+import CompanyListingPage from '../pages/interview/CompanyListing';
+import CompanyDetailPage from '../pages/interview/CompanyDetail';
+import ProjectsHub from '../pages/LearnPages/ProjectsHub';
+
+const publicRoutes = (
+  <>
+    <Route path="/interview-prep" element={<CompanyListingPage />} />
+    <Route path="/interview-prep/:slug" element={<CompanyDetailPage />} />
+    <Route path="/learn/ai" element={<AiLearningHub />} />
+    <Route path="/learn/ai/:slug" element={<AiTopicPage />} />
+  </>
+);
 import InterviewPrepHub from '../pages/LearnPages/InterviewPrepHub';
 import InterviewPrepLevel from '../pages/LearnPages/InterviewPrepLevel';
 import InterviewPrepTopic from '../pages/LearnPages/InterviewPrepTopic';
@@ -34,8 +40,27 @@ const PublicRoutes = () => {
       <Route path="/learn/interview-prep" element={<InterviewPrepHub />} />
       <Route path="/learn/interview-prep/:level" element={<InterviewPrepLevel />} />
       <Route path="/learn/interview-prep/:level/:topic" element={<InterviewPrepTopic />} />
+      {/* Projects Hub */}
+      <Route
+        path="/learn/projects"
+        element={<ProjectsHub />}
+      />
+
+      {/* Interview Prep (Level-Based) */}
+      <Route 
+        path="/learn/interview-prep" 
+        element={<InterviewPrepHub />} 
+      />
+      <Route 
+        path="/learn/interview-prep/:level" 
+        element={<InterviewPrepLevel />} 
+      />
+      <Route 
+        path="/learn/interview-prep/:level/:topic" 
+        element={<InterviewPrepTopic />} 
+      />
     </Routes>
   );
 };
 
-export default PublicRoutes;
+export default publicRoutes;

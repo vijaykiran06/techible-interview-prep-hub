@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
   background-color: #0f172a; /* A sleek, dark slate color */
   color: #f8fafc; /* Light text color */
@@ -5,6 +6,8 @@ body {
   min-height: 100vh;
 }
 /* ── Shared ─────────────────────────────────────── */
+=======
+>>>>>>> f0e1df1a0b6e18466ef09f1446f4e3e7ee22a432
 .status-msg {
   text-align: center;
   margin-top: 5rem;
@@ -14,7 +17,10 @@ body {
   color: #ef4444;
 }
 
+<<<<<<< HEAD
 /* ── Hub Page ───────────────────────────────────── */
+=======
+>>>>>>> f0e1df1a0b6e18466ef09f1446f4e3e7ee22a432
 .hub-container {
   max-width: 1100px;
   margin: 0 auto;
@@ -53,7 +59,10 @@ body {
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
 }
 
+<<<<<<< HEAD
 /* ── Tier Section ───────────────────────────────── */
+=======
+>>>>>>> f0e1df1a0b6e18466ef09f1446f4e3e7ee22a432
 .tier-section {
   margin-bottom: 3.5rem;
 }
@@ -104,7 +113,10 @@ body {
   text-decoration: underline;
 }
 
+<<<<<<< HEAD
 /* ── Progress Bar ───────────────────────────────── */
+=======
+>>>>>>> f0e1df1a0b6e18466ef09f1446f4e3e7ee22a432
 .tier-progress {
   height: 4px;
   margin-bottom: 1.25rem;
@@ -112,7 +124,10 @@ body {
   border-radius: 9999px;
 }
 
+<<<<<<< HEAD
 /* ── Topic Grid ─────────────────────────────────── */
+=======
+>>>>>>> f0e1df1a0b6e18466ef09f1446f4e3e7ee22a432
 .topic-grid-wrapper {
   position: relative;
 }
@@ -133,7 +148,10 @@ body {
   user-select: none;
 }
 
+<<<<<<< HEAD
 /* ── Gate Overlay ───────────────────────────────── */
+=======
+>>>>>>> f0e1df1a0b6e18466ef09f1446f4e3e7ee22a432
 .tier-gate-overlay {
   position: absolute;
   inset: 0;
@@ -169,7 +187,10 @@ body {
   opacity: 0.85;
 }
 
+<<<<<<< HEAD
 /* ── Topic Card ─────────────────────────────────── */
+=======
+>>>>>>> f0e1df1a0b6e18466ef09f1446f4e3e7ee22a432
 .topic-card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -217,7 +238,10 @@ body {
   overflow: hidden;
 }
 
+<<<<<<< HEAD
 /* ── Tier Badge Colors ──────────────────────────── */
+=======
+>>>>>>> f0e1df1a0b6e18466ef09f1446f4e3e7ee22a432
 .topic-card__tier,
 .topic-page__tier {
   font-size: 0.7rem;
@@ -242,7 +266,10 @@ body {
   border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
+<<<<<<< HEAD
 /* ── Topic Page ─────────────────────────────────── */
+=======
+>>>>>>> f0e1df1a0b6e18466ef09f1446f4e3e7ee22a432
 .topic-page {
   max-width: 800px;
   margin: 0 auto;
@@ -321,7 +348,10 @@ body {
   font-size: 0.875rem;
 }
 
+<<<<<<< HEAD
 /* ── AI Tutor Chat ──────────────────────────────── */
+=======
+>>>>>>> f0e1df1a0b6e18466ef09f1446f4e3e7ee22a432
 .ai-chat {
   margin-top: 2.5rem;
   background: rgba(99, 102, 241, 0.06);
@@ -396,7 +426,10 @@ body {
   line-height: 1.75;
 }
 
+<<<<<<< HEAD
 /* ── Quiz ───────────────────────────────────────── */
+=======
+>>>>>>> f0e1df1a0b6e18466ef09f1446f4e3e7ee22a432
 .quiz {
   margin-top: 2rem;
   background: rgba(255,255,255,0.02);
@@ -499,4 +532,8 @@ body {
   font-weight: 700;
   color: #4ade80;
   font-size: 0.95rem;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> f0e1df1a0b6e18466ef09f1446f4e3e7ee22a432

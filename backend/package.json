@@ -19,10 +19,15 @@
     "express": "^5.2.1",
     "express-session": "^1.19.0",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "groq-sdk": "^1.2.1",
 =======
     "lucide-react": "^1.21.0",
 >>>>>>> 707369da9fc042ea721cfec77bdabf4a246a9af6
+=======
+    "groq-sdk": "^1.2.1",
+    "lucide-react": "^1.21.0",
+>>>>>>> f0e1df1a0b6e18466ef09f1446f4e3e7ee22a432
     "mongoose": "^9.6.2",
     "multer": "^2.1.1"
   },
