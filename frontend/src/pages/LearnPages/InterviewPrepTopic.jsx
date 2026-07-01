@@ -1,5 +1,4 @@
 // frontend/src/pages/LearnPages/InterviewPrepTopic.jsx
-import React from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useInterviewQuestions } from '../../services/interviewPrepApi';
 import InterviewPrepQuestionCard from './InterviewPrepQuestionCard';
