@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const compensationSchema = new mongoose.Schema(
   {
@@ -64,7 +64,7 @@ const compensationSchema = new mongoose.Schema(
 compensationSchema.index({ company: 1 });
 compensationSchema.index({ level: 1 });
 
-module.exports = mongoose.model(
+export default mongoose.model(
   'Compensation',
   compensationSchema
 );

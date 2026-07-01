@@ -31,4 +31,4 @@ const handleError = (res, error, defaultMessage = "An error occurred") => {
   });
 };
 
-export { handleError };
+export default handleError;

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const interviewPrepTopicSchema = new mongoose.Schema({
 level: {
@@ -39,4 +39,4 @@ updatedAt: { type: Date, default: Date.now }
 
 interviewPrepTopicSchema.index({ level: 1, order: 1 });
 
-module.exports = mongoose.model('InterviewPrepTopic', interviewPrepTopicSchema);
+export default mongoose.model('InterviewPrepTopic', interviewPrepTopicSchema);

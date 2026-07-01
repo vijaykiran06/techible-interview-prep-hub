@@ -1,12 +1,11 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
-import publicRoutes from './routes/publicRoutes';
+import { Routes, Route } from 'react-router-dom';
+import PublicRoutes from './routes/publicRoutes'; 
 import './App.css';
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/interview-prep" replace />} />
-      {publicRoutes}
+      <Route path="/*" element={<PublicRoutes />} />
     </Routes>
   );
 }

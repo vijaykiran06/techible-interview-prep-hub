@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const companySchema = new mongoose.Schema(
   {
@@ -103,11 +103,8 @@ const companySchema = new mongoose.Schema(
   }
 );
 
-// Indexes for faster filtering/search
-
 companySchema.index({ industry: 1 });
 companySchema.index({ interviewDifficulty: 1 });
 companySchema.index({ featured: 1 });
 companySchema.index({ views: -1 });
-
-module.exports = mongoose.model('Company', companySchema);
+export default mongoose.model('Company', companySchema);
