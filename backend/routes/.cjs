@@ -1,13 +1,12 @@
 import express from "express";
-
 import InterviewPrepTopic from "../models/interviewPrepTopicSchema.js";
 import InterviewQuestion from "../models/interviewQuestionSchema.cjs";
+const { createRequire } = require("module");
+const requireES = createRequire(__filename);
 
-import { handleError } from "../middleware/handleError.js";
-import { checkDb } from "../middleware/checkDb.js";
-
+const handleError = requireES("../middleware/handleError.js").handleError;
+const checkDb = requireES("../middleware/checkDb.js").checkDb;
 const router = express.Router();
-
 // Apply the database connection check barrier globally across this module
 router.use(checkDb);
 
