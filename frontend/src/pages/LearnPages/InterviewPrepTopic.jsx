@@ -1,4 +1,3 @@
-// frontend/src/pages/LearnPages/InterviewPrepTopic.jsx
 import React from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useInterviewQuestions } from '../../services/interviewPrepApi';
@@ -16,51 +15,66 @@ const InterviewPrepTopic = () => {
 
   if (isError) {
     return (
-      <div className="text-center py-12 max-w-7xl mx-auto px-4 text-red-600">
-        {error?.message || 'Failed to verify explicit category questions.'}
+      <div className="min-h-[50vh] flex items-center justify-center max-w-7xl mx-auto px-4 text-red-400 bg-zinc-950">
+        <div className="bg-red-500/10 border border-red-500/20 rounded-2xl p-6 backdrop-blur-md">
+          {error?.message || 'Failed to verify explicit category questions.'}
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <div className="mb-6 flex items-center gap-2 text-xs text-gray-400 font-medium">
-        <Link to="/learn/interview-prep" className="hover:text-blue-600 transition-colors">Interview Prep</Link>
-        <ChevronRight className="w-3 h-3" />
-        <Link to={`/learn/interview-prep/${level}`} className="hover:text-blue-600 transition-colors">{displayLevel}</Link>
-        <ChevronRight className="w-3 h-3" />
-        <span className="text-gray-600 truncate">{fullTopicMetadata.title || 'Topic Loading'}</span>
+    <div className="min-h-screen bg-zinc-950 text-zinc-100 font-sans selection:bg-blue-500/30">
+      <div className="max-w-4xl mx-auto px-4 py-12 space-y-8">
+        
+        {/* Navigation Breadcrumb Layout Mapping */}
+        <div className="flex items-center gap-2 text-xs text-zinc-500 font-medium">
+          <Link to="/learn/interview-prep" className="hover:text-blue-400 transition-colors">Interview Prep</Link>
+          <ChevronRight className="w-3 h-3 text-zinc-800" />
+          <Link to={`/learn/interview-prep/${level}`} className="hover:text-blue-400 transition-colors">{displayLevel}</Link>
+          <ChevronRight className="w-3 h-3 text-zinc-800" />
+          <span className="text-zinc-300 truncate">{fullTopicMetadata.title || 'Topic Loading'}</span>
+        </div>
+
+        {/* Back Navigation Trigger */}
+        <button 
+          onClick={() => navigate(`/learn/interview-prep/${level}`)}
+          className="inline-flex items-center gap-2 text-xs text-zinc-400 hover:text-white transition-all bg-zinc-900/60 hover:bg-zinc-900 p-2.5 px-4 rounded-xl border border-zinc-800/80 font-bold shadow-md group"
+        >
+          <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" /> 
+          Back to Topics
+        </button>
+
+        {/* Header Summary Section */}
+        <div className="space-y-2">
+          <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight">
+            {fullTopicMetadata.title ? `${fullTopicMetadata.title} Matrix` : 'Framework Matrix'}
+          </h1>
+          <p className="text-sm text-zinc-400 max-w-2xl leading-relaxed">
+            Review common patterns for engineering interviews at {displayLevel} tiers. Each problem includes a structural blueprint framework.
+          </p>
+        </div>
+
+        {/* Dynamic Skeleton Content State Routing */}
+        {isLoading ? (
+          <div className="space-y-4">
+            {[1, 2, 3, 4].map((skeletonIndex) => (
+              <div key={skeletonIndex} className="h-16 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl animate-pulse" />
+            ))}
+          </div>
+        ) : questionSet.length === 0 ? (
+          <div className="text-center py-16 bg-zinc-900/30 border border-zinc-800/60 rounded-2xl text-zinc-500 text-sm backdrop-blur-md shadow-inner">
+            No problem-sets match this track criteria yet.
+          </div>
+        ) : (
+          /* Render Active Refactored Accordion Set */
+          <div className="w-full space-y-4">
+            {questionSet.map((q, idx) => (
+              <InterviewPrepQuestionCard key={idx} questionItem={q} index={idx} />
+            ))}
+          </div>
+        )}
       </div>
-
-      <button 
-        onClick={() => navigate(`/learn/interview-prep/${level}`)}
-        className="mb-4 flex items-center gap-2 text-xs text-gray-500 hover:text-gray-900 transition-colors bg-white px-3 py-1.5 rounded-lg border border-gray-200 font-medium shadow-sm"
-      >
-        <ArrowLeft className="w-3.5 h-3.5" /> Back to Topics
-      </button>
-
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">{fullTopicMetadata.title} Matrix</h1>
-        <p className="text-sm text-gray-500 mt-1.5">Review common patterns for engineering interviews at {displayLevel} tiers. Each problem includes a structural blueprint framework.</p>
-      </div>
-
-      {isLoading ? (
-        <div className="space-y-4">
-          {[1, 2, 3, 4].map((skeletonIndex) => (
-            <div key={skeletonIndex} className="h-14 bg-gray-100 border border-gray-200 rounded-xl animate-pulse" />
-          ))}
-        </div>
-      ) : questionSet.length === 0 ? (
-        <div className="text-center py-16 bg-white border border-gray-200 rounded-xl text-gray-500 text-sm">
-          No problem-sets match this track criteria yet.
-        </div>
-      ) : (
-        <div className="w-full space-y-4">
-          {questionSet.map((q, idx) => (
-            <InterviewPrepQuestionCard key={idx} questionItem={q} index={idx} />
-          ))}
-        </div>
-      )}
     </div>
   );
 };
