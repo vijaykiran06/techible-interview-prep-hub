@@ -1,10 +1,8 @@
 import axios from 'axios';
 
-const BACKEND_URL =
-  import.meta.env.VITE_BACKEND_URL ||
-  'http://localhost:3000';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
 
-const apiClient = axios.create({
+const axiosConfig = axios.create({
   baseURL: BACKEND_URL,
   timeout: 20000,
   headers: {
@@ -12,5 +10,5 @@ const apiClient = axios.create({
   },
 });
 
-export default apiClient;
+export default axiosConfig;
 export { BACKEND_URL };

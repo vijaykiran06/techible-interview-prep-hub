@@ -1,17 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
-const Company = require('../models/companySchema');
-const InterviewProcess = require('../models/interviewProcessSchema');
-const InterviewQuestion = require('../models/interviewQuestionSchema');
-const SuccessStory = require('../models/successStorySchema');
-const Compensation = require('../models/compensationSchema');
+const Company = require('../models/companySchema.cjs');
+const InterviewProcess = require('../models/interviewProcessSchema.cjs');
+const InterviewQuestion = require('../models/interviewQuestionSchema.cjs');
+const SuccessStory = require('../models/successStorySchema.cjs');
+const Compensation = require('../models/compensationSchema.cjs');
+const { createRequire } = require('module');
+const requireES = createRequire(__filename);
+const handleError = requireES('../middleware/handleError.js').handleError;
+const checkDb = requireES('../middleware/checkDb.js').checkDb;
 
-const handleError = require('../middleware/handleError');
-const checkDb = require('../middleware/checkDb');
-
-router.use(checkDb);
-
+ router.use(checkDb);
+ 
 //get request
 router.get('/', async (req, res) => {
   try {

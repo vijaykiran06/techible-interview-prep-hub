@@ -24,7 +24,7 @@ const modules = [
     icon: <FaCode />,
     color: "from-green-500/20 to-emerald-700/10",
     glow: "hover:shadow-green-500/30",
-     link: "/technical-challenges",
+     link:"/learn/challenges",
      
   },
   {
@@ -34,7 +34,7 @@ const modules = [
     icon: <FaRobot />,
     color: "from-violet-500/20 to-indigo-700/10",
     glow: "hover:shadow-violet-500/30",
-     link: "/ai-learning",
+     link: "/learn/ai",
   },
   {
     title: "Interview Prep",
@@ -43,7 +43,7 @@ const modules = [
     icon: <FaUserGraduate />,
     color: "from-blue-500/20 to-cyan-700/10",
     glow: "hover:shadow-blue-500/30",
-      link: "/interview",
+      link: "/learn/interview-prep",
   },
   {
     title: "Projects Hub",
@@ -52,7 +52,7 @@ const modules = [
     icon: <FaFolderOpen />,
     color: "from-yellow-500/20 to-orange-700/10",
     glow: "hover:shadow-yellow-500/30",
-     link: "/projects",
+     link: "/learn/projects",
   },
 ];
 

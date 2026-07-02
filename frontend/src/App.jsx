@@ -1,4 +1,4 @@
-import PublicRoutes from './routes/publicRoutes';
+import PublicRoutes from "./routes/publicRoutes";
 
 function App() {
   return <PublicRoutes />;

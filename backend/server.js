@@ -1,12 +1,18 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-require('dotenv').config();
+import "dotenv/config";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 
-const companyRoutes = require('./routes/companyRoutes');
-const interviewPrepRoutes = require('./routes/interviewPrepRoutes');
-// 1. IMPORT YOUR NEW CHALLENGE ROUTES
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+
+import aiTopicRoutes from "./routes/aiTopicRoutes.js";
+import aiChatRoutes from "./routes/aiChatRoutes.js";
+import interviewPrepRoutes from "./routes/interviewPrepRoutes.js";
+
+// Keep your challenge routes imported using the require method to match companyRoutes for now
 const challengeRoutes = require('./routes/challengeRoutes');
+const companyRoutes = require("./routes/companyRoutes.cjs");
 
 const app = express();
 
@@ -16,33 +22,32 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Health Check
-app.get('/health', (req, res) => {
+app.get("/health", (req, res) => {
   res.status(200).json({
     success: true,
-    message: 'Server running',
+    message: "Server running",
   });
 });
 
 // Routes
-app.use('/api/companies', companyRoutes);
-app.use('/api/interview-prep', interviewPrepRoutes);
-// 2. MOUNT THE CHALLENGES ROUTE TO MATCH THE SRS SPECIFICATION Exactly
+app.use("/api/companies", companyRoutes);
+app.use("/api/interview-prep", interviewPrepRoutes);
+app.use("/api/ai-topics", aiTopicRoutes);
+app.use("/api/ai-chat", aiChatRoutes);
+
+// Mount your challenges route here alongside the main branch routes
 app.use('/api/challenges', challengeRoutes);
 
 // MongoDB Connection
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    console.log('MongoDB Connected');
+    console.log("✅ MongoDB Connected");
 
     app.listen(process.env.PORT || 3000, () => {
-      console.log(
-        `Server running on port ${
-          process.env.PORT || 3000
-        }`
-      );
+      console.log(`✅ Server running on port ${process.env.PORT || 3000}`);
     });
   })
-  .catch((error) => {
-    console.error(error);
+  .catch((err) => {
+    console.error("❌ MongoDB connection failed:", err);
   });
