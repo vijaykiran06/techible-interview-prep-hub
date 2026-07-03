@@ -10,6 +10,8 @@ import aiTopicRoutes from "./routes/aiTopicRoutes.js";
 import aiChatRoutes from "./routes/aiChatRoutes.js";
 import interviewPrepRoutes from "./routes/interviewPrepRoutes.js";
 
+// Keep your challenge routes imported using the require method to match companyRoutes for now
+const challengeRoutes = require('./routes/challengeRoutes');
 const companyRoutes = require("./routes/companyRoutes.cjs");
 
 const app = express();
@@ -32,6 +34,9 @@ app.use("/api/companies", companyRoutes);
 app.use("/api/interview-prep", interviewPrepRoutes);
 app.use("/api/ai-topics", aiTopicRoutes);
 app.use("/api/ai-chat", aiChatRoutes);
+
+// Mount your challenges route here alongside the main branch routes
+app.use('/api/challenges', challengeRoutes);
 
 // MongoDB Connection
 mongoose

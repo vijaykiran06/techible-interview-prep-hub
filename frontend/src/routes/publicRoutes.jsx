@@ -1,4 +1,5 @@
-import { Routes, Route } from "react-router-dom";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
 import LandingPage from "../pages/LandingPage";
 
@@ -12,6 +13,12 @@ import ProjectsHub from "../pages/LearnPages/ProjectsHub";
 import InterviewPrepHub from "../pages/LearnPages/InterviewPrepHub";
 import InterviewPrepLevel from "../pages/LearnPages/InterviewPrepLevel";
 import InterviewPrepTopic from "../pages/LearnPages/InterviewPrepTopic";
+
+// --- MODULE 2: TECHNICAL CHALLENGES HUB LAZY IMPORTS ---
+const ChallengesLanding = React.lazy(() => import('../pages/LearnPages/ChallengesLanding'));
+const ChallengeDomainPage = React.lazy(() => import('../pages/LearnPages/ChallengeDomainPage'));
+const ChallengeCategoryPage = React.lazy(() => import('../pages/LearnPages/ChallengeCategoryPage'));
+const ChallengeDetailPage = React.lazy(() => import('../pages/LearnPages/ChallengeDetailPage'));
 
 const PublicRoutes = () => {
   return (
@@ -27,13 +34,13 @@ const PublicRoutes = () => {
       <Route path="/learn/ai" element={<AiLearningHub />} />
       <Route path="/learn/ai/:slug" element={<AiTopicPage />} />
 
-      {/* Projects */}
+      {/* Projects (Preserved from Main) */}
       <Route path="/learn/projects" element={<ProjectsHub />} />
 
-      {/* Level-based Interview Prep */}
-      <Route
-        path="/learn/interview-prep"
-        element={<InterviewPrepHub />}
+      {/* Level-Based Interview Prep */}
+      <Route 
+        path="/learn/interview-prep" 
+        element={<InterviewPrepHub />} 
       />
       <Route
         path="/learn/interview-prep/:level"
@@ -42,6 +49,24 @@ const PublicRoutes = () => {
       <Route
         path="/learn/interview-prep/:level/:topic"
         element={<InterviewPrepTopic />}
+      />
+
+      {/* --- MODULE 2: TECHNICAL CHALLENGES ROUTE ENTRIES --- */}
+      <Route 
+        path="/learn/challenges" 
+        element={<ChallengesLanding />} 
+      />
+      <Route 
+        path="/learn/challenges/:domain" 
+        element={<ChallengeDomainPage />} 
+      />
+      <Route 
+        path="/learn/challenges/:domain/:category" 
+        element={<ChallengeCategoryPage />} 
+      />
+      <Route 
+        path="/learn/challenges/:domain/:category/:slug" 
+        element={<ChallengeDetailPage />} 
       />
     </Routes>
   );
