@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const challengeCategorySchema = new mongoose.Schema({
   domain: {
@@ -25,4 +25,4 @@ const challengeCategorySchema = new mongoose.Schema({
 // Optimized index for sorting categories inside domains
 challengeCategorySchema.index({ domain: 1, order: 1 });
 
-module.exports = mongoose.model('ChallengeCategory', challengeCategorySchema);
+export default mongoose.model("ChallengeCategory", challengeCategorySchema);

@@ -1,11 +1,12 @@
-const express = require('express');
-const router = express.Router();
-const mongoose = require('mongoose');
-const ChallengeDomain = require('../models/challengeDomainSchema');
-const ChallengeCategory = require('../models/challengeCategorySchema');
-const Challenge = require('../models/challengeSchema');
-const logger = require('../utils/logger');
+import express from "express";
+import mongoose from "mongoose";
 
+import ChallengeDomain from "../models/challengeDomainSchema.js";
+import ChallengeCategory from "../models/challengeCategorySchema.js";
+import Challenge from "../models/challengeSchema.js";
+import logger from "../utils/logger.js";
+
+const router = express.Router();
 // Centralized handleError pattern matching the team specification
 const handleError = (res, error, defaultMessage = 'An error occurred') => {
   if (logger && logger.error) {
@@ -204,4 +205,4 @@ router.patch('/:slug', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const challengeDomainSchema = new mongoose.Schema({
   name: { type: String, required: true, trim: true }, // e.g., "DSA & Algorithms"
@@ -17,4 +17,4 @@ const challengeDomainSchema = new mongoose.Schema({
   updatedAt: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('ChallengeDomain', challengeDomainSchema);
+export default mongoose.model("ChallengeDomain", challengeDomainSchema);

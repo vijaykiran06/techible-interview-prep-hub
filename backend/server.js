@@ -11,7 +11,7 @@ import aiChatRoutes from "./routes/aiChatRoutes.js";
 import interviewPrepRoutes from "./routes/interviewPrepRoutes.js";
 
 // Keep your challenge routes imported using the require method to match companyRoutes for now
-const challengeRoutes = require('./routes/challengeRoutes');
+import challengeRoutes from "./routes/challengeRoutes.js";
 const companyRoutes = require("./routes/companyRoutes.cjs");
 
 const app = express();

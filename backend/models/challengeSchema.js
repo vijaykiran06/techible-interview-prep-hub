@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const challengeSchema = new mongoose.Schema({
   domain: {
@@ -84,4 +84,4 @@ const challengeSchema = new mongoose.Schema({
 challengeSchema.index({ domain: 1, category: 1, difficulty: 1 });
 challengeSchema.index({ domain: 1, category: 1, order: 1 });
 
-module.exports = mongoose.model('Challenge', challengeSchema);
+export default mongoose.model("Challenge", challengeSchema);
