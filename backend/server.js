@@ -42,12 +42,12 @@ app.use('/api/challenges', challengeRoutes);
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("✅ MongoDB Connected");
+    console.log("MongoDB Connected");
 
     app.listen(process.env.PORT || 3000, () => {
-      console.log(`✅ Server running on port ${process.env.PORT || 3000}`);
+      console.log(`Server running on port ${process.env.PORT || 3000}`);
     });
   })
   .catch((err) => {
-    console.error("❌ MongoDB connection failed:", err);
+    console.error("MongoDB connection failed:", err);
   });

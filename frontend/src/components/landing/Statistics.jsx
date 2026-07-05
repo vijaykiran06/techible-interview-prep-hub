@@ -34,7 +34,7 @@ const stats = [
   },
   {
     icon: <FaTrophy />,
-    value: "98%",
+    value: "92%",
     title: "Success Rate",
     color: "text-yellow-400",
   },

@@ -398,18 +398,176 @@ const companies = [
   // ... feel free to leave other company entries from your array here
 ];
 
-const buildQuestions = (map) => [
-  { company: map.google, question: 'Find all pairs of words where concatenation forms a palindrome.', category: 'DSA', difficulty: 'Hard', round: 'Onsite Round 1', pattern: 'Trie + Palindrome Decomposition', thingsToKeepInMind: ['Brute force is O(n²·k)', 'Insert reversed words into a Trie'], isRecent: true, dateAsked: new Date('2025-01-15'), approved: true, approvalStatus: 'approved', upvotes: 210 },
-  { company: map.google, question: 'Design Google Maps.', category: 'System Design', difficulty: 'Hard', round: 'Onsite Round 3', pattern: 'Graph + Distributed Data', thingsToKeepInMind: ['Requirements scalability'], approved: true, approvalStatus: 'approved', upvotes: 185 }
-];
+// ─────────────────────────────────────────────────────────────────
+// Per-company interview questions (2 each: 1 DSA + 1 System Design/role-specific)
+// Keyed by company slug so we only build entries for companies that
+// actually exist in `map` — prevents crashes if a slug is renamed/removed.
+// ─────────────────────────────────────────────────────────────────
+const questionBank = {
+  google: [
+    { question: 'Find all pairs of words where concatenation forms a palindrome.', category: 'DSA', difficulty: 'Hard', round: 'Onsite Round 1', pattern: 'Trie + Palindrome Decomposition', thingsToKeepInMind: ['Brute force is O(n²·k)', 'Insert reversed words into a Trie'], isRecent: true, dateAsked: new Date('2025-01-15'), upvotes: 210 },
+    { question: 'Design Google Maps.', category: 'System Design', difficulty: 'Hard', round: 'Onsite Round 3', pattern: 'Graph + Distributed Data', thingsToKeepInMind: ['Requirements scalability'], upvotes: 185 }
+  ],
+  microsoft: [
+    { question: 'Merge k sorted linked lists efficiently.', category: 'DSA', difficulty: 'Medium', round: 'Phone Screen', pattern: 'Min-Heap', thingsToKeepInMind: ['Naive concatenation + sort is O(N log N)', 'Heap of size k gives O(N log k)'], upvotes: 120 },
+    { question: 'Design Azure Blob Storage.', category: 'System Design', difficulty: 'Hard', round: 'Onsite Round 2', pattern: 'Distributed Storage', thingsToKeepInMind: ['Replication and consistency tradeoffs'], upvotes: 95 }
+  ],
+  amazon: [
+    { question: 'Detect and remove a cycle in a singly linked list.', category: 'DSA', difficulty: 'Medium', round: 'Online Assessment', pattern: 'Floyd\'s Cycle Detection', thingsToKeepInMind: ['O(1) space using two pointers'], upvotes: 140 },
+    { question: 'Design the product recommendation system for Amazon.com.', category: 'System Design', difficulty: 'Hard', round: 'Onsite Round 2', pattern: 'Collaborative Filtering + Caching', thingsToKeepInMind: ['Cold-start problem for new users'], upvotes: 160 }
+  ],
+  apple: [
+    { question: 'Implement an LRU cache with O(1) get and put.', category: 'DSA', difficulty: 'Medium', round: 'Phone Screen', pattern: 'HashMap + Doubly Linked List', thingsToKeepInMind: ['Evict least recently used on capacity overflow'], upvotes: 130 },
+    { question: 'Design an offline-first sync system for iCloud documents.', category: 'System Design', difficulty: 'Hard', round: 'Onsite Round 3', pattern: 'Conflict Resolution + Vector Clocks', thingsToKeepInMind: ['Handling merge conflicts across devices'], upvotes: 88 }
+  ],
+  meta: [
+    { question: 'Serialize and deserialize a binary tree.', category: 'DSA', difficulty: 'Medium', round: 'Onsite Round 1', pattern: 'Pre-order Traversal', thingsToKeepInMind: ['Use a sentinel marker for null nodes'], upvotes: 150 },
+    { question: 'Design the News Feed ranking system.', category: 'System Design', difficulty: 'Hard', round: 'Onsite Round 2', pattern: 'Ranking + Fan-out', thingsToKeepInMind: ['Fan-out on write vs fan-out on read'], upvotes: 175 }
+  ],
+  netflix: [
+    { question: 'Find the longest palindromic substring in a string.', category: 'DSA', difficulty: 'Medium', round: 'Phone Screen', pattern: 'Expand Around Center', thingsToKeepInMind: ['O(n^2) is acceptable; Manacher\'s gives O(n)'], upvotes: 100 },
+    { question: 'Design a global video streaming CDN.', category: 'System Design', difficulty: 'Hard', round: 'Onsite Round 2', pattern: 'CDN + Edge Caching', thingsToKeepInMind: ['Adaptive bitrate streaming'], upvotes: 110 }
+  ],
+  adobe: [
+    { question: 'Implement a Trie to support autocomplete suggestions.', category: 'DSA', difficulty: 'Medium', round: 'Onsite Round 1', pattern: 'Trie', thingsToKeepInMind: ['Store frequency at each node for ranking'], upvotes: 70 },
+    { question: 'Design real-time collaborative editing for a design canvas.', category: 'System Design', difficulty: 'Hard', round: 'Onsite Round 2', pattern: 'Operational Transform / CRDT', thingsToKeepInMind: ['Conflict-free merging of concurrent edits'], upvotes: 65 }
+  ],
+  salesforce: [
+    { question: 'Design a database schema for a multi-tenant CRM.', category: 'System Design', difficulty: 'Medium', round: 'Onsite Round 1', pattern: 'Multi-Tenancy', thingsToKeepInMind: ['Shared schema vs schema-per-tenant tradeoffs'], upvotes: 60 },
+    { question: 'Find duplicate customer records in a large dataset efficiently.', category: 'DSA', difficulty: 'Medium', round: 'Phone Screen', pattern: 'Hashing + Fuzzy Matching', thingsToKeepInMind: ['Normalize fields before hashing'], upvotes: 55 }
+  ],
+  uber: [
+    { question: 'Design the rider-driver matching system.', category: 'System Design', difficulty: 'Hard', round: 'Onsite Round 2', pattern: 'Geohashing + Matching', thingsToKeepInMind: ['Balancing ETA vs driver utilization'], upvotes: 120 },
+    { question: 'Find the shortest path with dynamically changing edge weights (live traffic).', category: 'DSA', difficulty: 'Hard', round: 'Onsite Round 1', pattern: 'Dijkstra Variant', thingsToKeepInMind: ['Re-computation strategy as weights change'], upvotes: 90 }
+  ],
+  linkedin: [
+    { question: 'Design the "People You May Know" feature.', category: 'System Design', difficulty: 'Medium', round: 'Onsite Round 1', pattern: 'Graph Traversal (Mutual Connections)', thingsToKeepInMind: ['Precompute vs on-demand scoring'], upvotes: 85 },
+    { question: 'Implement a rate limiter for API requests.', category: 'DSA', difficulty: 'Medium', round: 'Phone Screen', pattern: 'Sliding Window / Token Bucket', thingsToKeepInMind: ['Token bucket allows bursts; sliding window is stricter'], upvotes: 78 }
+  ],
+  oracle: [
+    { question: 'Design a distributed transaction system with two-phase commit.', category: 'System Design', difficulty: 'Hard', round: 'Onsite Round 2', pattern: 'Two-Phase Commit', thingsToKeepInMind: ['Coordinator failure handling'], upvotes: 45 },
+    { question: 'Optimize a slow SQL query using proper indexing.', category: 'DSA', difficulty: 'Medium', round: 'Onsite Round 1', pattern: 'Query Optimization', thingsToKeepInMind: ['Composite index column order matters'], upvotes: 50 }
+  ],
+  nvidia: [
+    { question: 'Explain memory coalescing in CUDA kernels and how to optimize for it.', category: 'System Design', difficulty: 'Hard', round: 'Onsite Round 1', pattern: 'GPU Memory Access Patterns', thingsToKeepInMind: ['Aligned, contiguous access maximizes throughput'], upvotes: 40 },
+    { question: 'Design a job scheduler for GPU compute workloads.', category: 'System Design', difficulty: 'Hard', round: 'Onsite Round 2', pattern: 'Priority Scheduling + Resource Partitioning', thingsToKeepInMind: ['Preemption vs run-to-completion tradeoffs'], upvotes: 38 }
+  ],
+  flipkart: [
+    { question: 'Design an inventory management system for flash sales.', category: 'System Design', difficulty: 'Hard', round: 'Onsite Round 2', pattern: 'Distributed Locking + Queueing', thingsToKeepInMind: ['Prevent overselling under high concurrency'], upvotes: 92 },
+    { question: 'Find the kth largest element in a continuous data stream.', category: 'DSA', difficulty: 'Medium', round: 'Phone Screen', pattern: 'Min-Heap of size k', thingsToKeepInMind: ['Maintain heap size k for O(log k) updates'], upvotes: 75 }
+  ],
+  swiggy: [
+    { question: 'Design a real-time order tracking system.', category: 'System Design', difficulty: 'Medium', round: 'Onsite Round 1', pattern: 'WebSockets + Geolocation Streaming', thingsToKeepInMind: ['Batching location updates to reduce load'], upvotes: 58 },
+    { question: 'Optimize delivery partner assignment to minimize total delivery time.', category: 'DSA', difficulty: 'Hard', round: 'Onsite Round 2', pattern: 'Bipartite Matching', thingsToKeepInMind: ['Hungarian algorithm for optimal assignment'], upvotes: 52 }
+  ],
+  zomato: [
+    { question: 'Design a restaurant search and ranking system.', category: 'System Design', difficulty: 'Medium', round: 'Onsite Round 1', pattern: 'Search Index + Ranking Signals', thingsToKeepInMind: ['Balancing relevance, rating, and distance'], upvotes: 48 },
+    { question: 'Detect fraudulent or fake reviews using text pattern analysis.', category: 'DSA', difficulty: 'Medium', round: 'Phone Screen', pattern: 'Text Similarity / Hashing', thingsToKeepInMind: ['Shingling + Jaccard similarity for near-duplicates'], upvotes: 41 }
+  ],
+  paytm: [
+    { question: 'Design a wallet transaction ledger system.', category: 'System Design', difficulty: 'Hard', round: 'Onsite Round 2', pattern: 'Double-Entry Ledger + Idempotency', thingsToKeepInMind: ['Every transaction must be atomic and auditable'], upvotes: 66 },
+    { question: 'Ensure idempotency in payment retry APIs.', category: 'System Design', difficulty: 'Medium', round: 'Onsite Round 1', pattern: 'Idempotency Keys', thingsToKeepInMind: ['Client-generated idempotency key prevents double charges'], upvotes: 59 }
+  ],
+  infosys: [
+    { question: 'Explain the SOLID principles with a real-world example.', category: 'System Design', difficulty: 'Easy', round: 'Technical Round 1', pattern: 'OOP Fundamentals', thingsToKeepInMind: ['Single Responsibility is the most commonly probed'], upvotes: 35 },
+    { question: 'Write a SQL query to find the Nth highest salary.', category: 'DSA', difficulty: 'Easy', round: 'Technical Round 1', pattern: 'Subquery / Window Function', thingsToKeepInMind: ['DENSE_RANK() handles ties correctly'], upvotes: 44 }
+  ],
+  tcs: [
+    { question: 'Explain database normalization with an example up to 3NF.', category: 'DSA', difficulty: 'Easy', round: 'Technical Round 1', pattern: 'Normalization', thingsToKeepInMind: ['Each normal form removes a specific type of redundancy'], upvotes: 30 },
+    { question: 'Reverse a string in place without using extra space.', category: 'DSA', difficulty: 'Easy', round: 'Technical Round 1', pattern: 'Two Pointers', thingsToKeepInMind: ['Swap from both ends toward the center'], upvotes: 28 }
+  ],
+  wipro: [
+    { question: 'Explain OOP concepts (encapsulation, inheritance, polymorphism, abstraction) with examples.', category: 'System Design', difficulty: 'Easy', round: 'Technical Round 1', pattern: 'OOP Fundamentals', thingsToKeepInMind: ['Give a concrete code example for each pillar'], upvotes: 25 },
+    { question: 'Implement binary search on a sorted array.', category: 'DSA', difficulty: 'Easy', round: 'Technical Round 1', pattern: 'Binary Search', thingsToKeepInMind: ['Watch for off-by-one errors in the mid calculation'], upvotes: 27 }
+  ],
+  accenture: [
+    { question: 'Design a scalable ticketing system for an IT helpdesk.', category: 'System Design', difficulty: 'Medium', round: 'Technical Round 2', pattern: 'Queueing + Priority Scheduling', thingsToKeepInMind: ['SLA-based prioritization'], upvotes: 22 },
+    { question: 'Explain REST API best practices and common status codes.', category: 'System Design', difficulty: 'Easy', round: 'Technical Round 1', pattern: 'REST Fundamentals', thingsToKeepInMind: ['Idempotent verbs: GET, PUT, DELETE'], upvotes: 24 }
+  ]
+};
 
-const buildStories = (map) => [
-  { company: map.google, authorName: 'Vikram S.', isAnonymous: false, role: 'SDE L4', package: { min: 3500000, max: 4500000, currency: 'INR' }, yearOfJoining: 2024, story: 'The phone screen was tough...', preparationApproach: '5 months...', keyAdvice: 'Practice coding...', approved: true, approvalStatus: 'approved' }
-];
+const buildQuestions = (map) => Object.entries(questionBank).flatMap(([slug, questions]) => {
+  if (!map[slug]) return [];
+  return questions.map((q) => ({
+    company: map[slug],
+    approved: true,
+    approvalStatus: 'approved',
+    ...q
+  }));
+});
 
-const buildCompensation = (map) => [
-  { company: map.google, role: 'SWE (New Grad)', level: 'Fresher', minSalary: 2200000, maxSalary: 3500000, currency: 'INR', location: 'Hyderabad', source: 'Levels.fyi', yearReported: 2025 }
-];
+// ─────────────────────────────────────────────────────────────────
+// Per-company success stories (1 each)
+// ─────────────────────────────────────────────────────────────────
+const storyBank = {
+  google: { authorName: 'Vikram S.', role: 'SDE L4', package: { min: 3500000, max: 4500000, currency: 'INR' }, yearOfJoining: 2024, story: 'The phone screen was tough...', preparationApproach: '5 months of daily DSA practice plus mock system design interviews.', keyAdvice: 'Practice coding under time pressure and think out loud.' },
+  microsoft: { authorName: 'Ananya R.', role: 'SDE II', package: { min: 2800000, max: 3600000, currency: 'INR' }, yearOfJoining: 2024, story: 'Four rounds covering DSA, system design, and a values-fit conversation.', preparationApproach: '3 months focused on trees, graphs, and Azure fundamentals.', keyAdvice: 'Be ready to explain tradeoffs, not just working code.' },
+  amazon: { authorName: 'Rohit K.', role: 'SDE I', package: { min: 2400000, max: 3200000, currency: 'INR' }, yearOfJoining: 2023, story: 'Leadership principles were probed as heavily as the coding rounds.', preparationApproach: 'Prepared STAR-format stories for every leadership principle.', keyAdvice: 'Have 2-3 strong stories ready for "Ownership" and "Customer Obsession".' },
+  apple: { authorName: 'Sanya M.', role: 'Software Engineer', package: { min: 3200000, max: 4200000, currency: 'INR' }, yearOfJoining: 2024, story: 'Deep dive into iOS internals and a take-home design exercise.', preparationApproach: 'Reviewed memory management and concurrency in Swift.', keyAdvice: 'Show genuine attention to detail and craftsmanship in your answers.' },
+  meta: { authorName: 'Karan V.', role: 'Software Engineer', package: { min: 3600000, max: 4800000, currency: 'INR' }, yearOfJoining: 2024, story: 'Two coding rounds plus a behavioral round on "moving fast".', preparationApproach: 'Grinded medium/hard LeetCode graph and DP problems for 4 months.', keyAdvice: 'Optimize for clarity of communication, not just the final answer.' },
+  netflix: { authorName: 'Priya D.', role: 'Senior Software Engineer', package: { min: 5500000, max: 7000000, currency: 'INR' }, yearOfJoining: 2023, story: 'Interview focused heavily on ownership and past project depth.', preparationApproach: 'Prepared to discuss production incidents and postmortems in detail.', keyAdvice: 'Netflix values seniority and judgment over algorithmic tricks.' },
+  adobe: { authorName: 'Arjun T.', role: 'Member of Technical Staff', package: { min: 2600000, max: 3400000, currency: 'INR' }, yearOfJoining: 2024, story: 'Coding round followed by a design discussion on Creative Cloud sync.', preparationApproach: 'Focused on data structures plus distributed systems basics.', keyAdvice: 'Adobe interviewers appreciate creative, product-aware solutions.' },
+  salesforce: { authorName: 'Neha S.', role: 'Software Engineer', package: { min: 2500000, max: 3300000, currency: 'INR' }, yearOfJoining: 2024, story: 'Emphasis on database design for multi-tenant systems.', preparationApproach: 'Studied schema design patterns and SOQL deeply.', keyAdvice: 'Understand tenant isolation tradeoffs before the interview.' },
+  uber: { authorName: 'Aditya P.', role: 'Software Engineer II', package: { min: 3400000, max: 4400000, currency: 'INR' }, yearOfJoining: 2023, story: 'Heavy focus on real-time systems and geospatial algorithms.', preparationApproach: 'Practiced graph algorithms and read Uber engineering blog posts.', keyAdvice: 'Be comfortable estimating scale (QPS, storage) on the spot.' },
+  linkedin: { authorName: 'Ishaan G.', role: 'Software Engineer', package: { min: 3000000, max: 3900000, currency: 'INR' }, yearOfJoining: 2024, story: 'Graph-heavy DSA round plus a system design round on feeds.', preparationApproach: 'Focused on graph traversal and ranking system design.', keyAdvice: 'LinkedIn interviewers like structured, framework-driven answers.' },
+  oracle: { authorName: 'Divya N.', role: 'Applications Engineer', package: { min: 1800000, max: 2400000, currency: 'INR' }, yearOfJoining: 2023, story: 'Strong emphasis on SQL and database internals.', preparationApproach: 'Practiced query optimization and indexing strategies.', keyAdvice: 'Know the difference between clustered and non-clustered indexes cold.' },
+  nvidia: { authorName: 'Rahul B.', role: 'Systems Software Engineer', package: { min: 4200000, max: 5500000, currency: 'INR' }, yearOfJoining: 2024, story: 'Low-level questions on GPU architecture and parallel computing.', preparationApproach: 'Studied CUDA programming and memory hierarchy in depth.', keyAdvice: 'Be precise about hardware-level tradeoffs, not just high-level concepts.' },
+  flipkart: { authorName: 'Meera J.', role: 'SDE II', package: { min: 2700000, max: 3500000, currency: 'INR' }, yearOfJoining: 2024, story: 'Scenario-based system design around Big Billion Days traffic spikes.', preparationApproach: 'Practiced designing for extreme concurrency and queueing.', keyAdvice: 'Always ask about scale and peak traffic before designing.' },
+  swiggy: { authorName: 'Yash R.', role: 'Software Development Engineer', package: { min: 2200000, max: 2900000, currency: 'INR' }, yearOfJoining: 2024, story: 'Practical coding round on optimizing delivery routing.', preparationApproach: 'Studied geospatial indexing and matching algorithms.', keyAdvice: 'Real-time systems questions reward pragmatic, working solutions.' },
+  zomato: { authorName: 'Tanya A.', role: 'Software Engineer', package: { min: 2000000, max: 2700000, currency: 'INR' }, yearOfJoining: 2023, story: 'Focused on search ranking and recommendation logic.', preparationApproach: 'Reviewed ranking algorithms and A/B testing fundamentals.', keyAdvice: 'Product sense matters as much as raw coding ability here.' },
+  paytm: { authorName: 'Harsh V.', role: 'Software Engineer', package: { min: 1900000, max: 2600000, currency: 'INR' }, yearOfJoining: 2024, story: 'Deep questions on transaction consistency and idempotency.', preparationApproach: 'Studied distributed transactions and payment system design.', keyAdvice: 'Correctness under failure matters more than raw speed in fintech interviews.' },
+  infosys: { authorName: 'Sneha K.', role: 'Systems Engineer', package: { min: 450000, max: 650000, currency: 'INR' }, yearOfJoining: 2024, story: 'Standard technical round on OOP, SQL, and aptitude.', preparationApproach: 'Revised core CS fundamentals and solved basic coding problems.', keyAdvice: 'Focus on fundamentals — Infosys interviews rarely go beyond the basics.' },
+  tcs: { authorName: 'Aman D.', role: 'Assistant System Engineer', package: { min: 390000, max: 550000, currency: 'INR' }, yearOfJoining: 2024, story: 'Aptitude test followed by a technical and HR round.', preparationApproach: 'Practiced quantitative aptitude and basic programming.', keyAdvice: 'Clear communication in the HR round is as important as technical skill.' },
+  wipro: { authorName: 'Pooja L.', role: 'Project Engineer', package: { min: 400000, max: 600000, currency: 'INR' }, yearOfJoining: 2024, story: 'Coding test followed by a managerial round on teamwork.', preparationApproach: 'Revised OOP concepts and basic data structures.', keyAdvice: 'Be ready to discuss teamwork and past academic projects.' },
+  accenture: { authorName: 'Vivek S.', role: 'Associate Software Engineer', package: { min: 420000, max: 620000, currency: 'INR' }, yearOfJoining: 2024, story: 'Technical round on REST APIs plus a client-facing communication round.', preparationApproach: 'Practiced explaining technical concepts in simple language.', keyAdvice: 'Accenture values communication skills alongside technical basics.' }
+};
+
+const buildStories = (map) => Object.entries(storyBank).flatMap(([slug, s]) => {
+  if (!map[slug]) return [];
+  return [{
+    company: map[slug],
+    isAnonymous: false,
+    approved: true,
+    approvalStatus: 'approved',
+    ...s
+  }];
+});
+
+// ─────────────────────────────────────────────────────────────────
+// Per-company compensation reports (1 each)
+// ─────────────────────────────────────────────────────────────────
+const compensationBank = {
+  google: { role: 'SWE (New Grad)', level: 'Fresher', minSalary: 2200000, maxSalary: 3500000, currency: 'INR', location: 'Hyderabad' },
+  microsoft: { role: 'SDE II', level: 'Mid-Level', minSalary: 2500000, maxSalary: 3600000, currency: 'INR', location: 'Bengaluru' },
+  amazon: { role: 'SDE I', level: 'Junior', minSalary: 2200000, maxSalary: 3200000, currency: 'INR', location: 'Hyderabad' },
+  apple: { role: 'Software Engineer', level: 'Mid-Level', minSalary: 3000000, maxSalary: 4200000, currency: 'INR', location: 'Bengaluru' },
+  meta: { role: 'Software Engineer', level: 'Mid-Level', minSalary: 3400000, maxSalary: 4800000, currency: 'INR', location: 'Bengaluru' },
+  netflix: { role: 'Senior Software Engineer', level: 'Senior', minSalary: 5000000, maxSalary: 7000000, currency: 'INR', location: 'Remote' },
+  adobe: { role: 'Member of Technical Staff', level: 'Mid-Level', minSalary: 2400000, maxSalary: 3400000, currency: 'INR', location: 'Noida' },
+  salesforce: { role: 'Software Engineer', level: 'Mid-Level', minSalary: 2300000, maxSalary: 3300000, currency: 'INR', location: 'Hyderabad' },
+  uber: { role: 'Software Engineer II', level: 'Mid-Level', minSalary: 3200000, maxSalary: 4400000, currency: 'INR', location: 'Bengaluru' },
+  linkedin: { role: 'Software Engineer', level: 'Mid-Level', minSalary: 2800000, maxSalary: 3900000, currency: 'INR', location: 'Bengaluru' },
+  oracle: { role: 'Applications Engineer', level: 'Junior', minSalary: 1600000, maxSalary: 2400000, currency: 'INR', location: 'Hyderabad' },
+  nvidia: { role: 'Systems Software Engineer', level: 'Senior', minSalary: 3800000, maxSalary: 5500000, currency: 'INR', location: 'Pune' },
+  flipkart: { role: 'SDE II', level: 'Mid-Level', minSalary: 2500000, maxSalary: 3500000, currency: 'INR', location: 'Bengaluru' },
+  swiggy: { role: 'Software Development Engineer', level: 'Junior', minSalary: 2000000, maxSalary: 2900000, currency: 'INR', location: 'Bengaluru' },
+  zomato: { role: 'Software Engineer', level: 'Junior', minSalary: 1800000, maxSalary: 2700000, currency: 'INR', location: 'Gurugram' },
+  paytm: { role: 'Software Engineer', level: 'Junior', minSalary: 1700000, maxSalary: 2600000, currency: 'INR', location: 'Noida' },
+  infosys: { role: 'Systems Engineer', level: 'Fresher', minSalary: 400000, maxSalary: 650000, currency: 'INR', location: 'Bengaluru' },
+  tcs: { role: 'Assistant System Engineer', level: 'Fresher', minSalary: 350000, maxSalary: 550000, currency: 'INR', location: 'Mumbai' },
+  wipro: { role: 'Project Engineer', level: 'Fresher', minSalary: 380000, maxSalary: 600000, currency: 'INR', location: 'Bengaluru' },
+  accenture: { role: 'Associate Software Engineer', level: 'Fresher', minSalary: 400000, maxSalary: 620000, currency: 'INR', location: 'Pune' }
+};
+
+const buildCompensation = (map) => Object.entries(compensationBank).flatMap(([slug, c]) => {
+  if (!map[slug]) return [];
+  return [{
+    company: map[slug],
+    source: 'Levels.fyi',
+    yearReported: 2025,
+    ...c
+  }];
+});
 
 // Dummy placeholder helper required to prevent script reference failure
 const buildInterviewProcesses = (map) => [];
@@ -485,7 +643,8 @@ async function seedDatabase() {
       description: 'Foundational array manipulation and hash map lookup problems.',
       order: 1,
       challengeCount: 1,
-      isActive: true
+      isActive: true,
+      level: 'Easy'
     });
 
     await Challenge.create({
@@ -539,7 +698,8 @@ const stringsCategory = await ChallengeCategory.create({
   description: 'Pattern matching, sliding windows, and string manipulation problems.',
   order: 2,
   challengeCount: 3,
-  isActive: true
+  isActive: true,
+  level: 'Easy'
 });
 
 await Challenge.insertMany([
@@ -621,7 +781,8 @@ const linkedListCategory = await ChallengeCategory.create({
   description: 'Pointer manipulation, cycle detection, and reversal problems.',
   order: 3,
   challengeCount: 2,
-  isActive: true
+  isActive: true,
+  level: 'Medium'
 });
 
 await Challenge.insertMany([
@@ -680,7 +841,8 @@ const treesCategory = await ChallengeCategory.create({
   description: 'Traversals, balancing, and binary search tree properties.',
   order: 4,
   challengeCount: 2,
-  isActive: true
+  isActive: true,
+  level: 'Easy'
 });
 
 await Challenge.insertMany([
@@ -739,7 +901,8 @@ const graphsCategory = await ChallengeCategory.create({
   description: 'BFS, DFS, topological sort, and shortest-path problems.',
   order: 5,
   challengeCount: 2,
-  isActive: true
+  isActive: true,
+  level: 'Medium'
 });
 
 await Challenge.insertMany([
@@ -798,7 +961,8 @@ const dpCategory = await ChallengeCategory.create({
   description: 'Memoization, tabulation, and optimal substructure problems.',
   order: 6,
   challengeCount: 2,
-  isActive: true
+  isActive: true,
+  level: 'Medium'
 });
 
 await Challenge.insertMany([
@@ -857,7 +1021,8 @@ const backtrackingCategory = await ChallengeCategory.create({
   description: 'Combinatorics, constraint satisfaction, and exhaustive search problems.',
   order: 7,
   challengeCount: 2,
-  isActive: true
+  isActive: true,
+  level: 'Medium'
 });
 
 await Challenge.insertMany([
@@ -918,7 +1083,8 @@ const solidCategory = await ChallengeCategory.create({
   description: 'Applying single responsibility, open-closed, and dependency inversion in real designs.',
   order: 1,
   challengeCount: 1,
-  isActive: true
+  isActive: true,
+  level: 'Hard'
 });
 
 await Challenge.create({
@@ -952,7 +1118,8 @@ const designPatternsCategory = await ChallengeCategory.create({
   description: 'Applying classic Gang of Four patterns to interview-style design problems.',
   order: 2,
   challengeCount: 1,
-  isActive: true
+  isActive: true,
+  level: 'Medium'
 });
 
 await Challenge.create({
@@ -986,7 +1153,8 @@ const parkingLotCategory = await ChallengeCategory.create({
   description: 'Classic LLD interview problem: modeling a multi-level parking lot with different vehicle and spot types.',
   order: 3,
   challengeCount: 1,
-  isActive: true
+  isActive: true,
+  level: 'Medium'
 });
 
 await Challenge.create({
@@ -1021,7 +1189,8 @@ const hldDomain = await ChallengeDomain.create({
   description: 'Architect large-scale distributed systems for real-world products.',
   icon: 'Network',
   order: 3,
-  isActive: true
+  isActive: true,
+  level: 'Medium'
 });
 
 const urlShortenerCategory = await ChallengeCategory.create({
@@ -1031,7 +1200,8 @@ const urlShortenerCategory = await ChallengeCategory.create({
   description: 'Design a scalable URL shortening service like Bitly or TinyURL.',
   order: 1,
   challengeCount: 2,
-  isActive: true
+  isActive: true,
+  level: 'Medium'
 });
 
 await Challenge.insertMany([
@@ -1090,7 +1260,8 @@ const whatsappCategory = await ChallengeCategory.create({
   description: 'Design a real-time messaging system with delivery guarantees.',
   order: 2,
   challengeCount: 1,
-  isActive: true
+  isActive: true,
+  level: 'Hard'
 });
 
 await Challenge.create({
@@ -1135,7 +1306,8 @@ const joinsCategory = await ChallengeCategory.create({
   description: 'Combining and filtering data across multiple related tables.',
   order: 1,
   challengeCount: 2,
-  isActive: true
+  isActive: true,
+  level: 'Easy'
 });
 
 await Challenge.insertMany([

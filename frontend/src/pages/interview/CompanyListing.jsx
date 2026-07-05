@@ -73,7 +73,7 @@ companies.sort((a, b) => {
 <div className="mb-10">
   <input
     type="text"
-    placeholder="🔍 Search companies..."
+    placeholder=" Search companies..."
     value={search}
     onChange={(e) => setSearch(e.target.value)}
     className="w-full rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur-xl px-6 py-5 text-lg text-white outline-none focus:border-blue-500 transition"
@@ -156,7 +156,7 @@ companies.sort((a, b) => {
         onChange={(e) => setSortBy(e.target.value)}
         className="w-full rounded-2xl bg-zinc-800 border border-zinc-700 px-5 py-4 text-white focus:border-blue-500 outline-none"
       >
-        <option value="popular">🔥 Most Popular</option>
+        <option value="popular"> Most Popular</option>
         <option value="alphabetical">🔤 Alphabetical</option>
         <option value="recent">🆕 Recently Added</option>
       </select>
