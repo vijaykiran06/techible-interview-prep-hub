@@ -52,7 +52,7 @@ const modules = [
     icon: <FaFolderOpen />,
     color: "from-yellow-500/20 to-orange-700/10",
     glow: "hover:shadow-yellow-500/30",
-     link: "/projects",
+     link: "/learn/projects",
   },
 ];
 
@@ -116,11 +116,12 @@ const ModuleEcosystem = () => {
               </p>
 
              <Link
-          to={module.link}
-        className="mt-8 inline-block text-cyan-400 font-semibold group-hover:translate-x-2 transition"
-           >
-             Explore →
-         </Link>
+  to={module.link}
+  onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "instant" })}
+  className="mt-8 inline-block text-cyan-400 font-semibold group-hover:translate-x-2 transition"
+>
+  Explore →
+</Link>
 
             </motion.div>
 

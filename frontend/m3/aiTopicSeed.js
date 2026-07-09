@@ -69,6 +69,7 @@ const topics = [
     description: "O(1) lookups — used in 60% of interview solutions.",
     content: "Hash maps store key-value pairs with O(1) average lookup. Collisions handled via chaining or open addressing. Use them to reduce O(n²) brute force to O(n): two-sum, frequency count, anagram detection.",
   },
+  
   {
     title: "Recursion and Backtracking",
     slug: "recursion-and-backtracking",
@@ -76,6 +77,7 @@ const topics = [
     description: "The foundation of tree problems and combinatorics.",
     content: "Recursion solves a problem by calling itself on smaller inputs. Backtracking explores all options and undoes choices that don't work. Classic: N-Queens, permutations, subsets, Sudoku solver.",
   },
+
   {
     title: "Sorting Algorithms",
     slug: "sorting-algorithms",

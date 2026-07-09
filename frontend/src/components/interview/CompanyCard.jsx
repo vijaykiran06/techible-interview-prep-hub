@@ -4,7 +4,7 @@ import {
   Eye,
   FileText,
   ArrowRight,
-  Sparkles,
+
 } from "lucide-react";
 
 const CompanyCard = ({ company }) => {
@@ -109,10 +109,7 @@ const CompanyCard = ({ company }) => {
         {/* Footer */}
         <div className="mt-6 flex items-center justify-between rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-4 group-hover:shadow-lg group-hover:shadow-blue-600/30 transition">
           <div className="flex items-center gap-2">
-            <Sparkles
-              size={18}
-              className="text-white"
-            />
+            
 
             <span className="font-semibold text-white">
               Interview Guide

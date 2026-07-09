@@ -1,15 +1,18 @@
-import express from 'express';
-import Company from '../models/companySchema.js';
-import InterviewProcess from '../models/interviewProcessSchema.js';
-import InterviewQuestion from '../models/interviewQuestionSchema.js';
-import SuccessStory from '../models/successStorySchema.js';
-import Compensation from '../models/compensationSchema.js';
-import handleError from '../middleware/handleError.js';
-import checkDb from '../middleware/checkDb.js';
-
+const express = require('express');
 const router = express.Router();
-router.use(checkDb);
 
+const Company = require('../models/companySchema.cjs');
+const InterviewProcess = require('../models/interviewProcessSchema.cjs');
+const InterviewQuestion = require('../models/interviewQuestionSchema.cjs');
+const SuccessStory = require('../models/successStorySchema.cjs');
+const Compensation = require('../models/compensationSchema.cjs');
+const { createRequire } = require('module');
+const requireES = createRequire(__filename);
+const handleError = requireES('../middleware/handleError.js').handleError;
+const checkDb = requireES('../middleware/checkDb.js').checkDb;
+
+ router.use(checkDb);
+ 
 //get request
 router.get('/', async (req, res) => {
   try {
@@ -337,4 +340,4 @@ router.get('/:slug/compensation', async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;
