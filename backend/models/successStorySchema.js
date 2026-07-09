@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-
+import mongoose from 'mongoose';
 const successStorySchema = new mongoose.Schema(
   {
     company: {
@@ -78,7 +77,7 @@ const successStorySchema = new mongoose.Schema(
 successStorySchema.index({ company: 1 });
 successStorySchema.index({ yearOfJoining: -1 });
 
-module.exports = mongoose.model(
+export default mongoose.model(
   'SuccessStory',
   successStorySchema
 );

@@ -1,7 +1,7 @@
 import express from "express";
 import AiTopic from "../models/aiTopicSchema.js";
-import { checkDb } from "../middleware/checkDb.js";
-import { handleError } from "../middleware/handleError.js";
+import checkDb from "../middleware/checkDb.js";
+import  handleError  from "../middleware/handleError.js";
 
 const router = express.Router();
 

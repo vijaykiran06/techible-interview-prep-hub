@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-
+import mongoose from 'mongoose';
 const interviewQuestionSchema = new mongoose.Schema(
   {
     company: {
@@ -94,7 +93,7 @@ interviewQuestionSchema.index({
   dateAsked: -1,
 });
 
-module.exports = mongoose.model(
+export default mongoose.model(
   'InterviewQuestion',
   interviewQuestionSchema
 );

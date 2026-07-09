@@ -1,3 +1,10 @@
+body {
+  background-color: #0f172a; /* A sleek, dark slate color */
+  color: #f8fafc; /* Light text color */
+  margin: 0;
+  min-height: 100vh;
+}
+/* ── Shared ─────────────────────────────────────── */
 .status-msg {
   text-align: center;
   margin-top: 5rem;
@@ -7,6 +14,7 @@
   color: #ef4444;
 }
 
+/* ── Hub Page ───────────────────────────────────── */
 .hub-container {
   max-width: 1100px;
   margin: 0 auto;
@@ -45,6 +53,7 @@
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
 }
 
+/* ── Tier Section ───────────────────────────────── */
 .tier-section {
   margin-bottom: 3.5rem;
 }
@@ -95,6 +104,7 @@
   text-decoration: underline;
 }
 
+/* ── Progress Bar ───────────────────────────────── */
 .tier-progress {
   height: 4px;
   margin-bottom: 1.25rem;
@@ -102,6 +112,7 @@
   border-radius: 9999px;
 }
 
+/* ── Topic Grid ─────────────────────────────────── */
 .topic-grid-wrapper {
   position: relative;
 }
@@ -122,6 +133,7 @@
   user-select: none;
 }
 
+/* ── Gate Overlay ───────────────────────────────── */
 .tier-gate-overlay {
   position: absolute;
   inset: 0;
@@ -157,6 +169,7 @@
   opacity: 0.85;
 }
 
+/* ── Topic Card ─────────────────────────────────── */
 .topic-card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -204,6 +217,7 @@
   overflow: hidden;
 }
 
+/* ── Tier Badge Colors ──────────────────────────── */
 .topic-card__tier,
 .topic-page__tier {
   font-size: 0.7rem;
@@ -228,6 +242,7 @@
   border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
+/* ── Topic Page ─────────────────────────────────── */
 .topic-page {
   max-width: 800px;
   margin: 0 auto;
@@ -306,6 +321,7 @@
   font-size: 0.875rem;
 }
 
+/* ── AI Tutor Chat ──────────────────────────────── */
 .ai-chat {
   margin-top: 2.5rem;
   background: rgba(99, 102, 241, 0.06);
@@ -380,6 +396,7 @@
   line-height: 1.75;
 }
 
+/* ── Quiz ───────────────────────────────────────── */
 .quiz {
   margin-top: 2rem;
   background: rgba(255,255,255,0.02);
@@ -482,4 +499,205 @@
   font-weight: 700;
   color: #4ade80;
   font-size: 0.95rem;
+}
+
+/* Navbar */
+.ai-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+.ai-navbar__brand {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #fff;
+  cursor: pointer;
+}
+.ai-navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.ai-navbar__pricing-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #94a3b8;
+  padding: 0.4rem 0.875rem;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.ai-navbar__pricing-btn:hover {
+  border-color: #6366f1;
+  color: #fff;
+}
+.ai-navbar__login {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.ai-navbar__login:hover { opacity: 0.85; }
+.ai-navbar__user {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.ai-navbar__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #6366f1;
+}
+.ai-navbar__name {
+  font-size: 0.8rem;
+  color: #e2e8f0;
+}
+.ai-navbar__premium-badge {
+  font-size: 0.65rem;
+  background: rgba(251,191,36,0.15);
+  color: #fbbf24;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(251,191,36,0.3);
+}
+.ai-navbar__logout {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #64748b;
+  padding: 0.3rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+.ai-navbar__logout:hover {
+  border-color: #ef4444;
+  color: #f87171;
+}
+
+/* Pricing Page */
+.pricing-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+.pricing-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.pricing-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.pricing-subtitle {
+  color: #94a3b8;
+  font-size: 1rem;
+}
+.pricing-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+@media (max-width: 640px) {
+  .pricing-cards { grid-template-columns: 1fr; }
+}
+.pricing-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1.25rem;
+  padding: 2rem;
+}
+.pricing-card--premium {
+  background: rgba(99,102,241,0.08);
+  border-color: rgba(99,102,241,0.3);
+  position: relative;
+}
+.pricing-card__badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.pricing-card__badge--free {
+  background: rgba(255,255,255,0.08);
+  color: #94a3b8;
+}
+.pricing-card__badge--premium {
+  background: rgba(251,191,36,0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(251,191,36,0.3);
+}
+.pricing-card__price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+}
+.pricing-card__period {
+  color: #64748b;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+.pricing-card__features {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+.pricing-card__btn {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.2s;
+}
+.pricing-card__btn--free {
+  background: rgba(255,255,255,0.08);
+  color: #e2e8f0;
+}
+.pricing-card__btn--premium {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+}
+.pricing-card__btn--active {
+  background: rgba(34,197,94,0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34,197,94,0.3);
+}
+.pricing-card__btn:hover { opacity: 0.85; }
+.pricing-card__btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.pricing-card__msg {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: #4ade80;
+  text-align: center;
+}
+.pricing-card__note {
+  margin-top: 0.75rem;
+  font-size: 0.7rem;
+  color: #475569;
+  text-align: center;
 }

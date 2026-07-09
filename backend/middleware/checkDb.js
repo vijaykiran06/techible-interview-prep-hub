@@ -12,4 +12,4 @@ const checkDb = (req, res, next) => {
   next();
 };
 
-export { checkDb };
+export default checkDb;
