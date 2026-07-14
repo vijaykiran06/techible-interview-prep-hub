@@ -3,10 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { Lock } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import AiTopicCard from "../components/AiTopicCard";
-import AiNavbar from "../components/AiNavbar";
 import { fetchAiTopicsGrouped } from "../services/aiTopicService";
 
 const TIERS = {
@@ -17,13 +15,8 @@ const TIERS = {
 
 export default function AiLearningHub() {
   const [search, setSearch] = useState("");
+  const isLoggedIn = true; 
   const navigate = useNavigate();
-
-  // Auth from Redux — falls back to guest if store not set up yet
-  const auth = useSelector(state => state.auth) || {};
-  const isLoggedIn = auth.isLoggedIn || false;
-  const user       = auth.user || null;
-  const isPremium  = user?.isPremium || false;
 
   const completedTopics = [];
 

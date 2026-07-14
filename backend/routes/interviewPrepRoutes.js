@@ -1,10 +1,10 @@
 import express from "express";
 
 import InterviewPrepTopic from "../models/interviewPrepTopicSchema.js";
-import InterviewQuestion from "../models/interviewQuestionSchema.cjs";
+import InterviewQuestion from "../models/interviewQuestionSchema.js";
 
-import { handleError } from "../middleware/handleError.js";
-import { checkDb } from "../middleware/checkDb.js";
+import  handleError  from "../middleware/handleError.js";
+import  checkDb  from "../middleware/checkDb.js";
 
 const router = express.Router();
 

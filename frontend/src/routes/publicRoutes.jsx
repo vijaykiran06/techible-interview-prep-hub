@@ -1,26 +1,20 @@
-import { Route } from 'react-router-dom';
-import CompanyListingPage from '../pages/CompanyListing';
-import CompanyDetailPage from '../pages/CompanyDetail';
-import AiLearningHub from '../pages/AiLearningHub';
-import AiTopicPage from '../pages/AiTopicPage';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 
-import LandingPage from '../pages/LandingPage';
-import CompanyListingPage from '../pages/interview/CompanyListing';
-import CompanyDetailPage from '../pages/interview/CompanyDetail';
-import ProjectsHub from '../pages/LearnPages/ProjectsHub';
+import LandingPage from "../pages/LandingPage";
 
-const publicRoutes = (
-  <>
-    <Route path="/interview-prep" element={<CompanyListingPage />} />
-    <Route path="/interview-prep/:slug" element={<CompanyDetailPage />} />
-    <Route path="/learn/ai" element={<AiLearningHub />} />
-    <Route path="/learn/ai/:slug" element={<AiTopicPage />} />
-  </>
-);
-import InterviewPrepHub from '../pages/LearnPages/InterviewPrepHub';
-import InterviewPrepLevel from '../pages/LearnPages/InterviewPrepLevel';
-import InterviewPrepTopic from '../pages/LearnPages/InterviewPrepTopic';
+// Interview Prep
+import CompanyListingPage from "../pages/interview/CompanyListing";
+import CompanyDetailPage from "../pages/interview/CompanyDetail";
+
+// AI Learning Hub
+import AiLearningHub from "../pages/AiLearningHub";
+import AiTopicPage from "../pages/AiTopicPage";
+
+// Learn Pages
+import InterviewPrepHub from "../pages/LearnPages/InterviewPrepHub";
+import InterviewPrepLevel from "../pages/LearnPages/InterviewPrepLevel";
+import InterviewPrepTopic from "../pages/LearnPages/InterviewPrepTopic";
+import ProjectsHub from "../pages/LearnPages/ProjectsHub";
 
 const PublicRoutes = () => {
   return (
@@ -28,39 +22,35 @@ const PublicRoutes = () => {
       {/* Landing Page */}
       <Route path="/" element={<LandingPage />} />
 
-      {/* Interview Prep - Companies */}
+      {/* Company Interview Prep */}
       <Route path="/interview-prep" element={<CompanyListingPage />} />
       <Route path="/interview-prep/:slug" element={<CompanyDetailPage />} />
 
-      {/* Learn - AI Hub */}
+      {/* AI Learning Hub */}
       <Route path="/learn/ai" element={<AiLearningHub />} />
       <Route path="/learn/ai/:slug" element={<AiTopicPage />} />
 
-      {/* Learn - Interview Prep Modules */}
-      <Route path="/learn/interview-prep" element={<InterviewPrepHub />} />
-      <Route path="/learn/interview-prep/:level" element={<InterviewPrepLevel />} />
-      <Route path="/learn/interview-prep/:level/:topic" element={<InterviewPrepTopic />} />
+      {/* Interview Prep Learning Hub */}
+      <Route
+        path="/learn/interview-prep"
+        element={<InterviewPrepHub />}
+      />
+      <Route
+        path="/learn/interview-prep/:level"
+        element={<InterviewPrepLevel />}
+      />
+      <Route
+        path="/learn/interview-prep/:level/:topic"
+        element={<InterviewPrepTopic />}
+      />
+
       {/* Projects Hub */}
       <Route
         path="/learn/projects"
         element={<ProjectsHub />}
       />
-
-      {/* Interview Prep (Level-Based) */}
-      <Route 
-        path="/learn/interview-prep" 
-        element={<InterviewPrepHub />} 
-      />
-      <Route 
-        path="/learn/interview-prep/:level" 
-        element={<InterviewPrepLevel />} 
-      />
-      <Route 
-        path="/learn/interview-prep/:level/:topic" 
-        element={<InterviewPrepTopic />} 
-      />
     </Routes>
   );
 };
 
-export default publicRoutes;
+export default PublicRoutes;
