@@ -8,7 +8,7 @@ The application is built using a scalable MERN architecture with a modern React 
 
 ---
 
-## Features
+##  Features
 
 ### Company Listing
 
